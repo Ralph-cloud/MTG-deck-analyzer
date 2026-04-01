@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: mtg-analyzer
+    name: mtg-deck-analyzer
     env: node
     plan: free
     buildCommand: npm install
