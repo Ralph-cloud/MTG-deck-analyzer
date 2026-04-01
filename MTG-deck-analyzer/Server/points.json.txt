@@ -1,0 +1,6 @@
+{
+  "Sol Ring": 5,
+  "Mana Crypt": 10,
+  "Rhystic Study": 6,
+  "Cyclonic Rift": 7
+}
