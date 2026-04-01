@@ -1,7 +1,0 @@
-services:
-  - type: web
-    name: mtg-analyzer
-    env: node
-    plan: free
-    buildCommand: npm install
-    startCommand: node server/server.js
