@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MTG Analyzer</title>
+</head>
+<body>
+
+<h1>MTG Deck Analyzer</h1>
+
+<textarea id="input" placeholder="Paste deck or link"></textarea>
+
+<h2>Total Points: <span id="total">0</span></h2>
+<ul id="matches"></ul>
+
+<script>
+const input = document.getElementById("input");
+
+input.addEventListener("input", analyze);
+
+async function analyze() {
+  const res = await fetch("/analyze", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ input: input.value })
+  });
+
+  const data = await res.json();
+
+  document.getElementById("total").innerText = data.total;
+
+  const list = document.getElementById("matches");
+  list.innerHTML = "";
+
+  data.matches.forEach(m => {
+    const li = document.createElement("li");
+    li.innerText = `${m.card} (+${m.points})`;
+    list.appendChild(li);
+  });
+}
+</script>
+
+</body>
+</html>
